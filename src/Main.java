@@ -68,14 +68,22 @@ public class Main {
      * @param args the args
      * @throws IOException
      */
-    
     //Alguma definicições da simulação como o intervalo, o limite da execução e se a saída em log está habilitad
     public final static double SCHEDULING_INTERVAL = 300;
     public final static double SIMULATION_LIMIT = 24 * 60 * 60;
     public final static boolean ENABLE_OUTPUT = true;
     
-    public final static int NUMBER_OF_HOSTS = 15;
-    public final static int NUMBER_0F_VMS = 20;
+    //Configurações de Datacenter
+    public final static int NUMBER_OF_HOSTS = 180;
+    public final static int NUMBER_0F_VMS = 250;
+    public final static String arch = "x86"; // system architecture
+    public final static String os = "Linux"; // operating system
+    public final static String vmm = "Xen";
+    public final static double time_zone = 10.0; // time zone this resource located
+    public final static double cost = 3.0; // the cost of using processing in this resource
+    public final static double costPerMem = 0.05; // the cost of using memory in this resource
+    public final static double costPerStorage = 0.001; // the cost of using storage in this resource
+    public final static double costPerBw = 0.0; // the cost of using bw in this resource
 
     //definição da configuração das VMs utilizadas na simulação.
     public final static int VM_TYPES = 1;
@@ -124,21 +132,13 @@ public class Main {
         }
         return vms;
     }
-    
+
     //Função responsável pela criação do Datacenter
     public static Datacenter createDatacenter(
             String name,
             Class<? extends Datacenter> datacenterClass,
             List<PowerHost> hostList,
             VmAllocationPolicy vmAllocationPolicy) throws Exception {
-        String arch = "x86"; // system architecture
-        String os = "Linux"; // operating system
-        String vmm = "Xen";
-        double time_zone = 10.0; // time zone this resource located
-        double cost = 3.0; // the cost of using processing in this resource
-        double costPerMem = 0.05; // the cost of using memory in this resource
-        double costPerStorage = 0.001; // the cost of using storage in this resource
-        double costPerBw = 0.0; // the cost of using bw in this resource
 
         DatacenterCharacteristics characteristics = new DatacenterCharacteristics(
                 arch,
@@ -171,7 +171,7 @@ public class Main {
 
         return datacenter;
     }
-    
+
     //Função responsável pela criação do DataBroker
     public static DatacenterBroker createBroker() {
         DatacenterBroker broker = null;
@@ -183,7 +183,7 @@ public class Main {
         }
         return broker;
     }
-    
+
     //Função responsável pela criação da lista de hosts
     public static List<PowerHost> createHostList(int hostsNumber) {
         List<PowerHost> hostList = new ArrayList<PowerHost>();
@@ -308,7 +308,7 @@ public class Main {
             Log.printLine("Received " + newList.size() + " cloudlets");
 
             CloudSim.stopSimulation();
-            
+
             Helper.printResults(
                     datacenter,
                     vmList,
@@ -316,7 +316,7 @@ public class Main {
                     experimentName,
                     false,
                     outputFolder);
-            
+
             printCloudletList(newList);
 
         } catch (Exception e) {
