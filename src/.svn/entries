@@ -1,0 +1,91 @@
+10
+
+dir
+0
+https://svn.java.net/svn/sigdengue~sigdengueweb/Testes_Cloud/src
+https://svn.java.net/svn/sigdengue~sigdengueweb
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c7f7d1bd-cba0-e998-a10b-ab59c8387aa0
+
+BestFitCpuAllocationPolicy.java
+file
+
+
+
+add
+
+BestFitRamAllocationPolicy.java
+file
+
+
+
+add
+
+FirstFitAllocationPolicy.java
+file
+
+
+
+add
+
+LagoAlgorithmAllocationPolicy.java
+file
+
+
+
+add
+
+Main.java
+file
+
+
+
+add
+
+RandomAllocationPolicy.java
+file
+
+
+
+add
+
+WorstFitCPUAllocationPolicy.java
+file
+
+
+
+add
+
+WorstFitRamAllocationPolicy.java
+file
+
+
+
+add
+
+teste.java
+file
+
+
+
+add
+

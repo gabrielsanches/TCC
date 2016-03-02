@@ -1,0 +1,56 @@
+10
+
+dir
+0
+https://svn.java.net/svn/sigdengue~sigdengueweb/Testes_Cloud
+https://svn.java.net/svn/sigdengue~sigdengueweb
+add
+
+
+
+
+
+has-props
+has-prop-mods
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c7f7d1bd-cba0-e998-a10b-ab59c8387aa0
+
+build.xml
+file
+
+
+
+add
+
+manifest.mf
+file
+
+
+
+add
+
+nbproject
+dir
+
+
+
+add
+
+src
+dir
+
+
+
+add
+
