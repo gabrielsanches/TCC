@@ -74,8 +74,8 @@ public class Main {
     public final static boolean ENABLE_OUTPUT = true;
     
     //Configurações de Datacenter
-    public final static int NUMBER_OF_HOSTS = 180;
-    public final static int NUMBER_0F_VMS = 250;
+    public final static int NUMBER_OF_HOSTS = 2000;
+    public final static int NUMBER_0F_VMS = 2500;
     public final static String arch = "x86"; // system architecture
     public final static String os = "Linux"; // operating system
     public final static String vmm = "Xen";
@@ -86,22 +86,29 @@ public class Main {
     public final static double costPerBw = 0.0; // the cost of using bw in this resource
 
     //definição da configuração das VMs utilizadas na simulação.
-    public final static int VM_TYPES = 1;
-    public final static int[] VM_MIPS = {1000};
-    public final static int[] VM_PES = {2};
-    public final static int[] VM_RAM = {2048};
+    public final static int VM_TYPES = 3;
+    //public final static int[] VM_MIPS = {1000};
+    //public final static int[] VM_PES = {2};
+    //public final static int[] VM_RAM = {2048};
+    public final static int[] VM_MIPS = {600,300,200};
+    public final static int[] VM_PES = {4,2,1};
+    public final static int[] VM_RAM = {4096,2048,2048};
     public final static int VM_BW = 100000; // 100 Mbit/s
     public final static int VM_SIZE = 2500; // 2.5 GB
 
     //Definição da configuração dos hosts utilizados na simulação.
-    public final static int HOST_TYPES = 1;
-    public final static int[] HOST_MIPS = {2000};
-    public final static int[] HOST_PES = {4};
-    public final static int[] HOST_RAM = {16384};
+    public final static int HOST_TYPES = 2;
+    //public final static int[] HOST_MIPS = {2000};
+    //public final static int[] HOST_PES = {4};
+    //public final static int[] HOST_RAM = {16384};
+    public final static int[] HOST_MIPS = {2000,1000};
+    public final static int[] HOST_PES = {4,2};
+    public final static int[] HOST_RAM = {16384,16384};
     public final static int HOST_BW = 1000000; // 1 Gbit/s
     public final static int HOST_STORAGE = 1000000; // 1 TB
 
     public final static PowerModel[] HOST_POWER = {
+        new PowerModelSpecPowerHpProLiantMl110G4Xeon3040(),
         new PowerModelSpecPowerHpProLiantMl110G4Xeon3040()
     };
 
@@ -295,7 +302,7 @@ public class Main {
                     "Datacenter",
                     PowerDatacenter.class,
                     hostList,
-                    new RandomAllocationPolicy(hostList));
+                    new WorstFitCpuAllocationPolicy(hostList));
             datacenter.setDisableMigrations(true);
 
             broker.submitVmList(vmList);
